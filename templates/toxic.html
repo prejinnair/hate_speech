@@ -47,7 +47,7 @@
 
     <!-- Navbar Start -->
     <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0">
-        <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+        <a href="{% url 'index' %}" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
             <h1 class="m-0">Hate Speech</h1>
         </a>
         <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -56,9 +56,8 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto p-4 p-lg-0">
                 <a href="{% url 'index' %}" class="nav-item nav-link">Home</a>
-                <a href="{% url 'upload' %}" class="nav-item nav-link active">Upload</a>
                 <a href="{% url 'toxic' %}" class="nav-item nav-link active">Prediction</a>
-                <a href="{% url 'performance' %}" class="nav-item nav-link ">Performance_analysis</a>     
+                <a href="{% url 'performance' %}" class="nav-item nav-link ">Performance Analysis</a>     
                 <a href="{% url 'logout' %}" class="nav-item nav-link ">logout</a>
            
             </div>
@@ -71,7 +70,7 @@
     <!-- Page Header Start -->
     <div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s">
         <div class="container text-center py-5">
-            <h1 class="display-3 text-white mb-4 animated slideInDown">prediction</h1>
+            <h1 class="display-3 text-white mb-4 animated slideInDown">Prediction</h1>
             <nav aria-label="breadcrumb animated slideInDown">
                 
             </nav>
@@ -85,7 +84,7 @@
         <div class="container">
             <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
                 <p class="fs-5 fw-bold text-primary">Hate Comment Classifier</p>
-                <h1 class="display-5 mb-5">prediction</h1>
+                <h1 class="display-5 mb-5">Prediction</h1>
             </div>
             <div class="col-md-6 col-lg-4" style="margin-left:200px">
 		  <body onload="myFunction()">
@@ -96,7 +95,7 @@
             <form action="{% url 'predict' %}"method="post">
                 {% csrf_token %}
                 <div class="col-12 in ml-sm-7">
-                    <textarea id='text' type="text" name="text" placeholder="Enter your comment" required="required"  rows="8" cols="50"  style="font-size:25px;"/></textarea>
+                    <textarea id='text' type="text" name="text" placeholder="Enter your comment"   rows="5" cols="50"  style="font-size:25px;"></textarea>
                 </div>
 				</br>
 				 <div class="col-md-6 col-lg-4" style="margin-left:300px">
@@ -105,7 +104,22 @@
                 </div>
         </div>
             </form>
+        <br>
+        <form action="{% url 'predict' %}"method="post" enctype="multipart/form-data">
+        <div class="col-12 in ml-sm-7 text-center" style="border: 1px solid #ccc; padding: 10px; margin-top: 20px; margin-left:50px; width: 600px;">
+            <p class="fs-5 fw-bold text-primary">Hate Comment Classifier From Image</p>
+            <p>You can upload the image you want to check below!!</p>
+            <input type="file" style="margin-left: 200px;" name="datasetfile" id="file1" /> 
+            <br/>
+            <br>
         </div>
+        <br>
+        <div class="col-12 bt text-center" style="margin-left: 300px;">
+            <input type="submit" style="margin-right:250px" class="btn btn-success btn-large" value="Upload">
+           </div>
+            </form>
+        </div>
+        <br>
         <div class="row op">
             <h3>{{ pred_tox }} <br><br>
                 {{ pred_sev }} <br><br>
