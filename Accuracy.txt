@@ -1,0 +1,10 @@
+Toxic Speech Classification using Machine Learning Algorithms.
+
+Algorithm / Model Used: Random Forest Classifier.
+
+Score(toxic) 0.838055
+Score(severe_toxic) 0.934874
+Score(obscene) 0.909091
+Score(insult) 0.883993
+Score(threat) 0.795539
+Score(identity_hate) 0.768448
